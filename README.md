@@ -7,7 +7,7 @@
 6. Streamline the method for optimal performance through refactoring.
 
 
-# How to initialize the kata?
+# How to initialize the playground?
 ```shell
 python -m venv env
 source env/bin/activate
