@@ -48,3 +48,49 @@ def fib_sequence(num: int) -> list:
     fibs = [0, 1]
     fibs.extend(fibs[i - 1] + fibs[i - 2] for i in range(2, num))
     return fibs
+
+
+def bubble_sort(arr: list) -> list:
+    for _ in range(len(arr)):
+        for j in range(len(arr) - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, num: int):
+        self.stack.append(num)
+
+    def pop(self):
+        return self.stack.pop() if self.stack else None
+
+    def print_stack(self):
+        print(' '.join(str(i) for i in self.stack))
+
+
+class Queue:
+    def __init__(self):
+        self.queue = []
+
+    def enqueue(self, num: int):
+        self.queue.append(num)
+
+    def dequeue(self):
+        return self.queue.pop(0) if self.queue else None
+
+    def print_queue(self):
+        print(' '.join(str(i) for i in self.queue))
+
+
+def rotate_matrix(matrix):
+    n = len(matrix)
+    for i in range(n):
+        for j in range(i, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    for i in range(n):
+        matrix[i] = matrix[i][::-1]
+    return matrix

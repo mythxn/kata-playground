@@ -67,3 +67,44 @@ def test_fib_sequence():
     assert fib_sequence(10) == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
     assert fib_sequence(5) != [0, 1, 1, 2, 3, 5]
     assert fib_sequence(10) != [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+
+def test_bubble_sort():
+    assert bubble_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
+    assert bubble_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
+    assert bubble_sort([5, 4, 3, 2, 1]) != [5, 4, 3, 2, 1]
+    assert bubble_sort([1, 2, 3, 4, 5]) != [5, 4, 3, 2, 1]
+
+
+def test_stack(capfd: pytest.CaptureFixture):
+    stack = Stack()
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.print_stack()
+    result, _ = capfd.readouterr()
+    assert result == '1 2 3\n'
+    assert stack.pop() == 3
+    assert stack.pop() == 2
+    assert stack.pop() == 1
+    assert stack.pop() is None
+
+
+def test_queue(capfd: pytest.CaptureFixture):
+    queue = Queue()
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    queue.print_queue()
+    result, _ = capfd.readouterr()
+    assert result == '1 2 3\n'
+    assert queue.dequeue() == 1
+    assert queue.dequeue() == 2
+    assert queue.dequeue() == 3
+    assert queue.dequeue() is None
+
+
+def test_rotate_matrix():
+    matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    rotated_matrix = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]
+    assert rotate_matrix(matrix) == rotated_matrix
